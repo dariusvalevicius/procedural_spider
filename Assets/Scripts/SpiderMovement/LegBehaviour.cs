@@ -87,9 +87,10 @@ public class LegBehaviour : MonoBehaviour
         float moveFraction = (Time.time - startTime) / legMoveTime;
         Vector3 temp = Vector3.Lerp(initialPosition, targetPosition, moveFraction);
         float yOffset = Mathf.Sin(moveFraction * Mathf.PI) * stepHeight;
-        Vector3 offset = new Vector3(0f, yOffset, 0f);
+        Vector3 offset = transform.up * yOffset;
 
-        transform.position = temp + offset;
+        transform.position = temp;
+        transform.localPosition = transform.localPosition + offset;
 
 
     }
